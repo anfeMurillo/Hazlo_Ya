@@ -45,7 +45,7 @@ Desarrollar una aplicación web de gestión de tareas sencilla, utilizando HTML,
 *   **Frontend:**
     *   HTML5
     *   CSS3
-    *   JavaScript (ES6+)
+    *   JavaScript
 *   **Almacenamiento Local:**
     *   LocalStorage del navegador
 *   **Control de Versiones:**
