@@ -87,5 +87,128 @@ document.addEventListener('DOMContentLoaded', () => {
                 toggleComplete(task.id);
             });
             actionsDiv.appendChild(completeBtn);
+            // Botón para editar (lápiz) - RF2
+            const editBtn = document.createElement('button');
+            editBtn.className = 'edit-btn';
+            editBtn.innerHTML = '<i class="fas fa-pencil-alt"></i>';
+            editBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Evitar que se active el evento de clic en el elemento li
+                editTask(task.id);
+            });
+            actionsDiv.appendChild(editBtn);
+
+            // Botón para eliminar (basura) - RF4
+            const deleteBtn = document.createElement('button');
+            deleteBtn.className = 'delete-btn';
+            deleteBtn.innerHTML = '<i class="fas fa-trash"></i>';
+            deleteBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Evitar que se active el evento de clic en el elemento li
+                deleteTask(task.id);
+            });
+            actionsDiv.appendChild(deleteBtn);
+
+            li.appendChild(actionsDiv);
+            taskList.appendChild(li);
+        });
+    }
+
+    // RF1: Agregar una nueva tarea
+    function addTask() {
+        const title = taskTitleInput.value.trim(); // Obtener el título de la tarea
+        const description = taskDescInput.value.trim(); // Obtener la descripción de la tarea (opcional)
+
+        if (title === '') {
+            alert('El título de la tarea no puede estar vacío.'); // Mostrar alerta si el título está vacío
+            return;
+        }
+
+        const newTask = {
+            id: Date.now().toString(), // Crear un ID único usando la fecha actual
+            title: title,
+            description: description,
+            completed: false // Nueva tarea comienza como no completada
+        };
+
+        tasks.push(newTask); // Agregar la nueva tarea al arreglo
+        saveTasks(); // Guardar las tareas en el LocalStorage
+        renderTasks(); // Mostrar las tareas actualizadas
+
+        // Limpiar los campos de entrada
+        taskTitleInput.value = '';
+        taskDescInput.value = '';
+    }
+
+    // RF3: Alternar el estado de completado de una tarea
+    function toggleComplete(id) {
+        const taskIndex = tasks.findIndex(task => task.id === id); // Buscar la tarea por su ID
+        if (taskIndex > -1) {
+            tasks[taskIndex].completed = !tasks[taskIndex].completed; // Cambiar el estado de completado
+            saveTasks(); // Guardar los cambios
+            renderTasks(); // Volver a mostrar las tareas
+        }
+    }
+
+    // RF2: Editar el título y la descripción de una tarea
+    function editTask(id) {
+        const taskIndex = tasks.findIndex(task => task.id === id); // Buscar la tarea por su ID
+        if (taskIndex > -1) {
+            const task = tasks[taskIndex];
+
+            const newTitle = prompt('Ingrese el nuevo título de la tarea:', task.title); // Pedir nuevo título
+            if (newTitle !== null) {
+                const newDescription = prompt('Ingrese la nueva descripción de la tarea:', task.description); // Pedir nueva descripción
+
+                if (newDescription !== null) {
+                    tasks[taskIndex].title = newTitle.trim() === '' ? task.title : newTitle.trim(); // Mantener el título anterior si el nuevo está vacío
+                    tasks[taskIndex].description = newDescription.trim(); // Permitir descripción vacía
+                    saveTasks(); // Guardar los cambios
+                    renderTasks(); // Volver a mostrar las tareas
+                }
+            }
+        }
+    }
+
+    // RF4: Eliminar una tarea
+    function deleteTask(id) {
+        if (confirm('¿Está seguro de que desea eliminar esta tarea?')) { // Confirmar antes de eliminar
+            tasks = tasks.filter(task => task.id !== id); // Eliminar la tarea del arreglo
+            saveTasks(); // Guardar los cambios
+            renderTasks(); // Volver a mostrar las tareas
+        }
+    }
+
+    // RF5: Cambiar el filtro
+    function setFilter(filter) {
+        currentFilter = filter; // Cambiar el filtro actual
+        renderTasks(); // Volver a mostrar las tareas según el nuevo filtro
+    }
+
+    // Mostrar una alerta con la descripción de la tarea
+    function showDescription(id) {
+        const task = tasks.find(task => task.id === id); // Buscar la tarea por su ID
+        if (task) {
+            alert(`Descripción de "${task.title}":\n\n${task.description || '(Sin descripción)'}`); // Mostrar la descripción o un mensaje si no hay
+        }
+    }
+
+    // --- Escuchadores de eventos ---
+    addTaskBtn.addEventListener('click', addTask); // Escuchar clic en el botón para agregar tarea
+
+    // Permitir agregar tarea con la tecla Enter en el campo de título
+    taskTitleInput.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Evitar que se envíe un formulario si estuviera en uno
+            addTask(); // Agregar la tarea
+        }
+    });
+
+    // Escuchadores para los botones de filtro - RF5
+    filterAllBtn.addEventListener('click', () => setFilter('all')); // Mostrar todas las tareas
+    filterActiveBtn.addEventListener('click', () => setFilter('active')); // Mostrar tareas activas
+    filterCompletedBtn.addEventListener('click', () => setFilter('completed')); // Mostrar tareas completadas
+
+    // --- Carga inicial ---
+    loadTasks(); // Cargar las tareas al iniciar la página
+});
 
             
