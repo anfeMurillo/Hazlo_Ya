@@ -100,3 +100,101 @@ main {
     color: #888; /* Color del texto del placeholder */
     font-style: italic; /* Texto en cursiva */
 }
+
+#add-task-btn {
+    padding: 12px 20px; /* Espaciado interno */
+    background-color: #4A4A4A; /* Fondo gris oscuro */
+    color: white; /* Texto blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar cursor al pasar */
+    font-family: 'Roboto Mono', monospace; /* Fuente */
+    font-size: 1em; /* Tamaño de fuente */
+    font-weight: bold; /* Fuente en negrita */
+    transition: background-color 0.3s; /* Transición suave */
+    align-self: flex-start; /* Alinear el botón a la izquierda */
+}
+
+#add-task-btn:hover {
+    background-color: #606060; /* Fondo más claro al pasar */
+}
+
+.task-list-section h2 {
+    margin-top: 0; /* Sin margen superior */
+    margin-bottom: 20px; /* Espaciado inferior */
+    color: #4A4A4A; /* Texto gris oscuro */
+    font-size: 1.5em; /* Tamaño de fuente */
+    text-align: center; /* Centrar texto */
+}
+
+#task-list {
+    list-style: none; /* Sin viñetas */
+    padding: 0; /* Sin relleno */
+    margin: 0; /* Sin margen */
+}
+
+.task-item {
+    display: flex; /* Usar flexbox */
+    justify-content: space-between; /* Espaciado entre elementos */
+    align-items: center; /* Alinear elementos al centro */
+    padding: 12px 15px; /* Espaciado interno */
+    margin-bottom: 10px; /* Espaciado inferior */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #3498DB; /* Azul para tareas activas */
+    color: white; /* Texto blanco */
+    transition: background-color 0.3s; /* Transición suave */
+    cursor: pointer; /* Cambiar cursor al pasar */
+}
+
+.task-item.completed {
+    background-color: #F1C40F; /* Amarillo para tareas completadas */
+    color: #4A4A4A; /* Texto más oscuro para fondo amarillo */
+    /* text-decoration: line-through; */ /* Opcional: tachar texto */
+}
+
+.task-item .task-title {
+    flex-grow: 1; /* Ocupa el espacio disponible */
+    margin-right: 10px; /* Espacio entre el título y las acciones */
+    overflow: hidden; /* Evitar que el texto largo rompa el diseño */
+    white-space: nowrap; /* Evitar que el texto se divida en varias líneas */
+    text-overflow: ellipsis; /* Mostrar "..." si el texto es muy largo */
+}
+
+.task-actions button {
+    background: none; /* Sin fondo */
+    border: none; /* Sin borde */
+    color: white; /* Color de los íconos por defecto */
+    cursor: pointer; /* Cambiar cursor al pasar */
+    font-size: 1.1em; /* Tamaño de fuente */
+    margin-left: 8px; /* Espaciado entre botones */
+    padding: 5px; /* Espaciado interno para facilitar clics */
+    line-height: 1; /* Asegurar que los íconos se alineen bien */
+    transition: color 0.2s; /* Transición suave para el color */
+}
+
+.task-item.completed .task-actions button {
+    color: #4A4A4A; /* Color de los íconos para tareas completadas */
+}
+
+.task-actions button:hover {
+    color: #e0e0e0; /* Color más claro al pasar */
+}
+
+.task-item.completed .task-actions button:hover {
+    color: #000000; /* Color más oscuro al pasar para tareas completadas */
+}
+
+.task-item.completed .complete-btn .fa-heart {
+     font-weight: 900; /* Hacerlo sólido - usualmente requiere Font Awesome Pro, o usar la clase fas */
+     /* Usar toggle entre fas/far en JS es mejor */
+}
+
+/* Ajustes responsivos (ejemplo opcional) */
+@media (max-width: 768px) {
+    main, .task-manager {
+        flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
+    }
+    .task-input-section, .task-list-section {
+        width: 100%; /* Ocupa todo el ancho */
+    }
+}
