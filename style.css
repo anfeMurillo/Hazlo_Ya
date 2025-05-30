@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap'); /* Usando la fuente Roboto Mono como en la imagen */
+
+body {
+    font-family: 'Roboto Mono', monospace;
+    background-color: #f4f7f6; /* Color de fondo claro */
+    margin: 0; /* Sin margen alrededor del cuerpo */
+    padding: 20px; /* Espaciado interno */
+    display: flex; /* Usar flexbox para centrar */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: flex-start; /* Alinear al inicio (arriba) */
+    min-height: 100vh; /* Altura mínima de toda la ventana */
+    background-color: #ffffff; /* Fondo blanco como en la imagen */
+}
+
+.app-container {
+    background-color: #ffffff; /* Fondo del contenedor */
+    padding: 30px; /* Espaciado interno */
+    border-radius: 8px; /* Bordes redondeados */
+    /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); */ /* Sombra opcional */
+    width: 90%; /* Ancho del 90% del contenedor */
+    max-width: 900px; /* Ancho máximo para pantallas grandes */
+}
+
+header .logo {
+    text-align: center; /* Centrar el logo */
+    margin-bottom: 30px; /* Espaciado debajo del logo */
+}
+
+header h1 {
+    margin: 0; /* Sin margen */
+    font-size: 1.8em; /* Tamaño de fuente grande */
+    font-weight: 700; /* Fuente en negrita */
+    letter-spacing: 2px; /* Espaciado entre letras como en la imagen */
+}
+
+main {
+    display: flex; /* Usar flexbox */
+    gap: 40px; /* Espacio entre el input y la lista */
+}
+
+.task-manager {
+    display: flex; /* Usar flexbox */
+    width: 100%; /* Ocupa todo el ancho */
+    gap: 30px; /* Espacio entre las columnas izquierda y derecha */
+}
+
+.task-input-section {
+    flex: 1; /* Ocupa el espacio disponible */
+    display: flex; /* Usar flexbox */
+    flex-direction: column; /* Alinear elementos en columna */
+    gap: 15px; /* Espacio entre elementos */
+}
+
+.task-list-section {
+    flex: 1.5; /* Ocupa más espacio que la sección de entrada */
+}
+
+.filters {
+    display: flex; /* Usar flexbox */
+    gap: 10px; /* Espacio entre los botones */
+    margin-bottom: 10px; /* Espacio debajo de los filtros */
+}
+
+.filter-btn {
+    padding: 8px 15px; /* Espaciado interno */
+    border: 2px solid; /* Borde de 2px */
+    border-radius: 20px; /* Forma de píldora */
+    background-color: #ffffff; /* Fondo blanco */
+    cursor: pointer; /* Cambiar cursor al pasar */
+    font-family: 'Roboto Mono', monospace; /* Fuente */
+    font-size: 0.9em; /* Tamaño de fuente pequeño */
+    font-weight: bold; /* Fuente en negrita */
+    transition: background-color 0.3s, color 0.3s; /* Transición suave */
+}
+
+.filter-btn#filter-all { border-color: #4A4A4A; color: #4A4A4A; } /* Botón "Todos" */
+.filter-btn#filter-active { border-color: #3498DB; color: #3498DB; } /* Botón "Activos" */
+.filter-btn#filter-completed { border-color: #F1C40F; color: #F1C40F; } /* Botón "Completados" */
+
+.filter-btn.active {
+    color: #ffffff; /* Texto blanco cuando está activo */
+}
+.filter-btn#filter-all.active { background-color: #4A4A4A;} /* Fondo gris oscuro */
+.filter-btn#filter-active.active { background-color: #3498DB; } /* Fondo azul */
+.filter-btn#filter-completed.active { background-color: #F1C40F; } /* Fondo amarillo */
+
+#task-title-input,
+#task-desc-input {
+    padding: 12px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    font-family: 'Roboto Mono', monospace; /* Fuente */
+    font-size: 1em; /* Tamaño de fuente */
+    background-color: #EAEAEA; /* Fondo gris claro */
+    color: #555; /* Texto gris oscuro */
+}
+
+#task-title-input::placeholder,
+#task-desc-input::placeholder {
+    color: #888; /* Color del texto del placeholder */
+    font-style: italic; /* Texto en cursiva */
+}
