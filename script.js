@@ -1,4 +1,3 @@
-// Esteban Inicio
 document.addEventListener('DOMContentLoaded', () => {
     // --- Elementos del DOM ---
     const taskTitleInput = document.getElementById('task-title-input'); // Entrada para el título de la tarea
