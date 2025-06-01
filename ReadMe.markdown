@@ -1,5 +1,6 @@
 # Hazlo App: Gestor de Tareas Ligero
-
+Link:
+https://hazlo-ya.vercel.app/
 ## 1. Enunciado del Problema
 
 En equipos pequeños, los estudiantes de distintos ámbitos, no muy versados en la gestión de equipos, a menudo encuentran dificultades para organizar sus tareas y controlar su progreso. El objetivo de este proyecto es crear una aplicación web ligera de gestión de tareas, "Hazlo App", que permita a los usuarios crear, editar, marcar como completadas y eliminar tareas. El sistema debe ser accesible desde cualquier navegador, sin necesidad de instalación de software adicional.
